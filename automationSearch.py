@@ -30,6 +30,5 @@ for result in results.get("organic_results", []):
         urls.append(link)
         print(f"🔗 {link}")
 
-#ptionally, save the URLs to a file or a variable
 with open('gooleScrape.json', 'w') as json_file:
     json.dump(urls, json_file, indent=4)

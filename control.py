@@ -6,7 +6,7 @@ print("🔍 Running Google Search URL scraper...")
 result1 = subprocess.run(["python", "automationSearch.py"])
 
 if result1.returncode == 0:
-    time.sleep(5)  # Optional: wait for a couple of seconds before running the next script
+    time.sleep(5)  
     
     print("✅ Google scraper finished successfully.\n")
     
