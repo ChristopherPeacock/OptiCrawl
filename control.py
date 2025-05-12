@@ -21,5 +21,3 @@ if result1.returncode == 0:
 else:
     print("❌ Google scraper failed. Aborting email scraping.")
 
-
-
