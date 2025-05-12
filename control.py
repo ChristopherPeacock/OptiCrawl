@@ -1,23 +1,6 @@
 import subprocess
 import time
+from automationSearch import main
 
-# Run the script that gets URLs from Google
-print("🔍 Running Google Search URL scraper...")
-result1 = subprocess.run(["python", "automationSearch.py"])
-
-if result1.returncode == 0:
-    time.sleep(5)  
-    
-    print("✅ Google scraper finished successfully.\n")
-    
-    # Now run the email scraper
-    print("📧 Running email scraper...")
-    result2 = subprocess.run(["python", "emailScraper.py"])
-
-    if result2.returncode == 0:
-        print("✅ Email scraper completed successfully.")
-    else:
-        print("❌ Email scraper failed to run.")
-else:
-    print("❌ Google scraper failed. Aborting email scraping.")
-
+def run_script():
+    main()
