@@ -99,3 +99,6 @@ def main(keyWord, location, engine):
         print(f"Total URLs Scanned: {total_urls_scanned}")
 
     return 1
+
+if __name__ == "__main__":
+    main()

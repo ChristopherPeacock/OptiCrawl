@@ -51,5 +51,5 @@ def loadListAndExtract():
         json.dump(jsonOfEmails, json_file, indent=4)
         print(f"\n✅ Saved {len(jsonOfEmails)} results to emails.json.")    
     
-
-loadListAndExtract()
+if __name__ == "__main__":
+    loadListAndExtract()
