@@ -39,8 +39,7 @@ def main(keyWord, location, engine):
     # Use the correct path joining approach
     existing_hashes = set()
     urlScrapedPath = pathlib.Path('Data/')
-    file_path = urlScrapedPath / 'googleScrape.json'  # Proper path joining with pathlib
-
+    file_path = urlScrapedPath
     if os.path.exists(file_path):
         with open(file_path, 'r') as json_file:
             existing_data = json.load(json_file)
@@ -52,7 +51,7 @@ def main(keyWord, location, engine):
     else:
         existing_data = {}
 
-    pagination_path = urlScrapedPath/'pagination_state.json'
+    pagination_path = urlScrapedPath
     if os.path.exists(pagination_path):
         with open(pagination_path, 'r') as f:
             current_page = json.load(f).get('start', 0)
