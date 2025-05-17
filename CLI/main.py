@@ -4,10 +4,7 @@ import os
 import sys
 from dotenv import load_dotenv
 from emailScraper import loadListAndExtract
-import time
 import pathlib
-
-load_dotenv()
 
 def findKeyWord():
     keyWord = input("Enter the search keyword:")
