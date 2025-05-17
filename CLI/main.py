@@ -5,6 +5,7 @@ import sys
 from dotenv import load_dotenv
 from emailScraper import loadListAndExtract
 import time
+import pathlib
 
 load_dotenv()
 
@@ -76,10 +77,11 @@ def serviceSelection():
 def start():
     api_key_name = 'SERPAPIKEY'
     value = os.environ.get(api_key_name)
-    if value is None:
-        value = input(f"Serpapi API Key not found. Please enter your API key: ")
+    env_path = pathlib.Path("Data/.env")
+    if env_path.exists():
+        load_dotenv(dotenv_path=env_path)
         
-        with open(".env", "a") as env_file:
+        with open("Data/.env", "a") as env_file:
             env_file.write(f"\n{api_key_name}={value}")
         
         os.environ[api_key_name] = value
