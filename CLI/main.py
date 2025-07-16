@@ -68,7 +68,6 @@ def serviceSelection():
     else:
         print("Invalid choice, Choose again.")
         serviceSelection()
-        
     return engine 
 
 def start():
@@ -93,5 +92,5 @@ def start():
         if success == 1:
             whatToDoWithData()
     return   
- 
+
 start()
