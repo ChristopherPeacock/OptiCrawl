@@ -43,6 +43,12 @@ Unlike traditional CRM systems that require manual data entry, OptiCrawl automat
 - Built-in compliance checkers
 - Automatic data retention policies
 
+### 🔎 Recon 
+- Takes in URl and does a full recon look up on customer
+- crawls every URL on there page and gathers intel
+- filters out Linkedin URLS, champion emails, 
+- make a JSON report and a mark down report for a LLM to ingest 
+
 ---
 
 ## Why Choose OptiCrawl?
