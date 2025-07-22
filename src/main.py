@@ -1,10 +1,11 @@
-from automationSearch import main
-from banner import show_banner
+from search.automationSearch import main
+import visuals.banner 
 import os
 import sys
 from dotenv import load_dotenv
-from emailScraper import loadListAndExtract
+from search.emailScraper import loadListAndExtract
 import pathlib
+from recon.main import extractContent
 
 def findKeyWord():
     keyWord = input("Enter the search keyword:")

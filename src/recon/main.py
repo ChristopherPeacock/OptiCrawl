@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import os
 import re
 from urllib.parse import urlparse
-import CLI.recon.urlMapAndScrape as urlMapAndScrape
+from recon.urlMapAndScrape import extract_page_info
 from pathlib import Path
-from scrapeLinkedin import linkedinInfoScraper
+from recon.scrapeLinkedin import linkedinInfoScraper
 
 # map all urls and back links 
 # I can could scrape look for anker tags and then follow them? 
@@ -64,7 +64,7 @@ def reteriveInformation (content, url):
     linkedinRecon = linkedinInfoScraper(url)
     #webPageInfomation = ScrapedWebPageInfo(soup)
   
-    fullWebSiteMapedAndScraped = urlMapAndScrape.extract_page_info(url)
+    fullWebSiteMapedAndScraped = extract_page_info(url)
 
 
     #veriables to add into the report
@@ -199,4 +199,5 @@ def extractContent(url):
     
 
 
-extractContent("https://www.opticompliance.co.uk/")
+if __name__ == '__main__':
+    extractContent('www.opticompliance.co.uk')

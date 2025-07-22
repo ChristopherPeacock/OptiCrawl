@@ -9,12 +9,6 @@ from scrapeLinkedin import linkedinInfoScraper
 from datetime import datetime
 import json
 
-# map all urls and back links 
-# I can could scrape look for anker tags and then follow them? 
-# match emails found on web page and compare if diffrent bring forward for evaulation
-# can i do a DNS chaeck on a domain name 
-# check who there. could do sit codes?
-
 def extractCompanyName(soup):
     pass
 
