@@ -6,15 +6,13 @@ from urllib.parse import urlparse
 from recon.urlMapAndScrape import extract_page_info
 from pathlib import Path
 from recon.scrapeLinkedin import linkedinInfoScraper
+from core.shared import dnsChecker
 
 # map all urls and back links 
 # I can could scrape look for anker tags and then follow them? 
 # match emails found on web page and compare if diffrent bring forward for evaulation
 # can i do a DNS chaeck on a domain name 
 # check who there. could do sit codes?
-
-
-    
 
 def extractLinkedUrls(soup):
     urls = []
@@ -169,7 +167,12 @@ def reteriveInformation (content, url):
 def erroredUrls ():
     pass 
 
-def extractContent(url):
+def recon():
+
+    url = input("Enter Url of target")
+    confirmedUrl = dnsChecker(url)
+    
+
     headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
@@ -178,7 +181,7 @@ def extractContent(url):
     "Connection": "keep-alive",
     }
     try: 
-        response = requests.get(url, headers=headers, timeout=10)
+        response = requests.get(confirmedUrl, headers=headers, timeout=10)
 
         def serverResponse (code):
             if 200 <= code < 300:
@@ -198,4 +201,4 @@ def extractContent(url):
     
 
 if __name__ == '__main__':
-    extractContent('www.opticompliance.co.uk')
+    recon('www.opticompliance.co.uk')

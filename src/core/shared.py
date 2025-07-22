@@ -8,3 +8,6 @@ def serviceSelection():
     print("1. Google Search")
     print("2. Recon")
     print("9. Close Program")
+
+def dnsChecker():
+    pass

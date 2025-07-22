@@ -1,5 +1,6 @@
 from core.shared import serviceSelection, closeProgram
 from search.google.google import googlSearch
+from recon.main import recon
 import visuals.banner
 import os
 from dotenv import load_dotenv
@@ -29,14 +30,20 @@ def start():
     while True:
         serviceSelection()
         choice = input("Enter your choice (1-5): ")
-        if choice == '1':
-            googlSearch()
-        elif choice == '2':
-            print("Recon feature coming soon.")
-        elif choice == '9':
-            closeProgram()
-        else:
-            print("Invalid choice, try again.")
+        selectedService = {
+            '1': googlSearch,
+            '2': recon()
+        }
+        # if choice == '1':
+        #     googlSearch()
+        # elif choice == '2':
+        #     url = input("Enter Url of target")
+        #     confirmedUrl = dnsChecker(url)
+        #     main.extractContent(confirmedUrl)
+        # elif choice == '9':
+        #     closeProgram()
+        # else:
+        #     print("Invalid choice, try again.")
 
 if __name__ == "__main__":
     start()
