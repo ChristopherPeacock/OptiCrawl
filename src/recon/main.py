@@ -171,7 +171,6 @@ def recon():
 
     url = input("Enter Url of target")
     confirmedUrl = dnsChecker(url)
-    
 
     headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
@@ -196,6 +195,7 @@ def recon():
         serverResponse(response.status_code) 
         
     except requests.exceptions as e:
+        
         print(f"failed to connect to {url}: {e}")
         return 
     

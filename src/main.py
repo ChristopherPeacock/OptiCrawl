@@ -1,10 +1,12 @@
 from core.shared import serviceSelection, closeProgram
 from search.google.google import googlSearch
 from recon.main import recon
-import visuals.banner
+import visuals.banner 
+from visuals.banner import show_banner
 import os
 from dotenv import load_dotenv
 import pathlib
+import time
 
 def start():
     api_key_name = 'SERPAPIKEY'
@@ -30,11 +32,22 @@ def start():
     while True:
         serviceSelection()
         choice = input("Enter your choice (1-5): ")
-        
         if choice == '1':
             googlSearch()
+            print('Data Collected')
+            time.sleep(5)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            show_banner()
         elif choice == '2':
             recon()
+            time.sleep(5)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            show_banner()
+        elif choice == '3':
+            print('E.V.A is coming soon..')
+            time.sleep(5)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            show_banner()
         elif choice == '9':
             closeProgram()
         else:
