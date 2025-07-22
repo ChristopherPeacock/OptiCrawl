@@ -2,7 +2,6 @@ from search.google.automationSearch import serpapi
 from tools.emailScraper import loadListAndExtract
 from core.shared import closeProgram, serviceSelection
 
-
 def whatToDoWithData():
     print("Select what you want to do to the service.")
     print("1. Extract Emails")
