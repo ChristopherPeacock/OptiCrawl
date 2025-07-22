@@ -7,6 +7,7 @@ from recon.urlMapAndScrape import extract_page_info
 from pathlib import Path
 from recon.scrapeLinkedin import linkedinInfoScraper
 from core.shared import dnsChecker
+import json
 
 # map all urls and back links 
 # I can could scrape look for anker tags and then follow them? 
@@ -151,19 +152,29 @@ def reteriveInformation (content, url):
     }
 
     
-    desktopPath = Path.home() 
+    # Define the desktop folder
+    desktopPath = Path.home()
     filePath = desktopPath / "Desktop/MarketingReport"
-    filePath = str(filePath)
+
+# Create the folder if it doesn't exist
     if not os.path.exists(filePath):
         try:
             print(f"Creating folder in {filePath}")
             os.makedirs(filePath, exist_ok=True)
         except OSError as e:
-            print(f"Couldnt create folder on the Desktop .\nReason: {e.strerror}\n please check your permissions or avilable space.")    
-    folder_path = os.path.join(os.path.expanduser("~"), "Desktop", "MarketingReport")
-    token_heavy_json_report_file = os.path.join(folder_path)
+            print(f"Couldn't create folder on the Desktop.\nReason: {e.strerror}\nPlease check your permissions or available space.")
+
+    # Define file paths
+    token_heavy_json_report_file = os.path.join(filePath, "heavyJsonReport.json")
+    light_token_json_report_file = os.path.join(filePath, "lightJsonReport.json")
+
+    # Save the JSON files
+    with open(token_heavy_json_report_file, 'w') as file:
+        json.dump(token_heavy_json_report, file, indent=4)
+
+    with open(light_token_json_report_file, 'w') as file:
+        json.dump(light_token_json_report, file, indent=4)
     
-        
 def erroredUrls ():
     pass 
 
@@ -173,11 +184,11 @@ def recon():
     confirmedUrl = dnsChecker(url)
 
     headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Referer": "https://www.google.com/",
-    "Connection": "keep-alive",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Referer": "https://www.google.com/",
+        "Connection": "keep-alive",
     }
     try: 
         response = requests.get(confirmedUrl, headers=headers, timeout=10)
