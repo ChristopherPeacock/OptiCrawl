@@ -8,6 +8,7 @@ from pathlib import Path
 from recon.scrapeLinkedin import linkedinInfoScraper
 from core.shared import dnsChecker
 import json
+import time
 
 # map all urls and back links 
 # I can could scrape look for anker tags and then follow them? 
@@ -62,7 +63,6 @@ def reteriveInformation (content, url):
     contactLists = filter(arrayOfbackLinks, url)
     linkedinRecon = linkedinInfoScraper(url)
     #webPageInfomation = ScrapedWebPageInfo(soup)
-  
     fullWebSiteMapedAndScraped = extract_page_info(url)
 
 
@@ -74,7 +74,46 @@ def reteriveInformation (content, url):
     fullWebSiteContent = fullWebSiteMapedAndScraped
     print('Recon done, building up report ')
     # use all veribales to make a markdown report
+
+    heavyMarkDownReport = f"""
+    ## This is a report on {url or 'No url was given'} 
+    
+    # During the the recon phase we found tryed to find some competitor back links.
+    # This is who possibly our customers are working with: {possiblecDomainsFound}.
+
+    # We also scraped and filtered champion emails. 
+    # Champions are people who have power to move finaical decions for the company
+    # {decisionMakersEmailsFound}
+
+    # Along side this we tryed to find the linkedin profiles of who are on the company page
+    # People on company page are normaly important so we tryed to collect there linkedin profiles for futher recon
+    # {linkedInProfilesFound}
+
+    # We also tryed to scrape the data found on linkedin {linkedinInformation}
+
+    # Here is the the full context of the company that was scraped.
+    # {fullWebSiteContent}
+
+
     """
+
+    lightMarkDownReport = f"""
+    ## This is a report on {url or 'No url was given'} 
+    
+    # During the the recon phase we found tryed to find some competitor back links.
+    # This is who possibly our customers are working with: {possiblecDomainsFound}.
+
+    # We also scraped and filtered champion emails. 
+    # Champions are people who have power to move finaical decions for the company
+    # {decisionMakersEmailsFound}
+
+    # Along side this we tryed to find the linkedin profiles of who are on the company page
+    # People on company page are normaly important so we tryed to collect there linkedin profiles for futher recon
+    # {linkedInProfilesFound}
+
+    # We also tryed to scrape the data found on linkedin {linkedinInformation}
+
+   
 
 
     """
@@ -167,6 +206,8 @@ def reteriveInformation (content, url):
     # Define file paths
     token_heavy_json_report_file = os.path.join(filePath, "heavyJsonReport.json")
     light_token_json_report_file = os.path.join(filePath, "lightJsonReport.json")
+    heavy_mark_down_report_file = os.path.join(filePath, 'heavMarkdownReport.md')
+    light_mark_down_report_file = os.path.join(filePath, 'lightMarkDownRepor.md')
 
     # Save the JSON files
     with open(token_heavy_json_report_file, 'w') as file:
@@ -174,6 +215,16 @@ def reteriveInformation (content, url):
 
     with open(light_token_json_report_file, 'w') as file:
         json.dump(light_token_json_report, file, indent=4)
+    
+    with open(heavy_mark_down_report_file, "w") as file:
+        file.write(heavyMarkDownReport)
+    
+    with open(light_mark_down_report_file, 'w') as file:
+        file.write(heavy_mark_down_report_file)
+    
+    print(f"Reports saved @: {filePath}")
+    time.sleep(5)
+
     
 def erroredUrls ():
     pass 
