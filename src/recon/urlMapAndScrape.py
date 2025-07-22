@@ -10,12 +10,12 @@ def extract_page_info(url):
     base_url = url
     visited.add(base_url)
 
-    print(f"🚀 Crawling: {url}")
+    print(f"Crawling: {url}")
     try:
         r = requests.get(url, timeout=5)
     except requests.exceptions.RequestException as e:
-        print(f"❌ Error fetching {url}: {e}")
-        return
+        print(f"Error fetching {url}: {e}")
+        return f"Error fetching {url}: {e}"
 
     soup = BeautifulSoup(r.text, "html.parser")
 

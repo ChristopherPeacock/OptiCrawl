@@ -273,4 +273,3 @@ def extractContent(url):
     
 
 
-extractContent("https://www.opticompliance.co.uk/")
