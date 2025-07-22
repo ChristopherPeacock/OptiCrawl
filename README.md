@@ -65,7 +65,6 @@ Regular updates ensure compatibility with the latest search algorithms and data 
 git clone "https://github.com/ChristopherPeacock/OptiCrawl"
 
 
-
 ```
 
 ### Requirements
