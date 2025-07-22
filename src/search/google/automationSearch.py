@@ -7,7 +7,7 @@ import sys
 from dotenv import load_dotenv
 import pathlib
 
-def main(keyword, location, engine):
+def serpapi(keyword, location, engine):
     # Load .env from SCRAPER/Data/.env
     env_path = pathlib.Path(__file__).resolve().parents[1] / 'Data' / '.env'
     load_dotenv(dotenv_path=env_path)
@@ -93,4 +93,4 @@ def main(keyword, location, engine):
        
 if __name__ == "main":
 
-    main()
+    serpapi()

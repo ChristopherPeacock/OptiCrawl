@@ -196,8 +196,6 @@ def extractContent(url):
         print(f"failed to connect to {url}: {e}")
         return 
     
-    
-
 
 if __name__ == '__main__':
     extractContent('www.opticompliance.co.uk')
