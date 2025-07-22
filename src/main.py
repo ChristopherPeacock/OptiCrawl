@@ -30,20 +30,15 @@ def start():
     while True:
         serviceSelection()
         choice = input("Enter your choice (1-5): ")
-        selectedService = {
-            '1': googlSearch,
-            '2': recon()
-        }
-        # if choice == '1':
-        #     googlSearch()
-        # elif choice == '2':
-        #     url = input("Enter Url of target")
-        #     confirmedUrl = dnsChecker(url)
-        #     main.extractContent(confirmedUrl)
-        # elif choice == '9':
-        #     closeProgram()
-        # else:
-        #     print("Invalid choice, try again.")
+        
+        if choice == '1':
+            googlSearch()
+        elif choice == '2':
+            recon()
+        elif choice == '9':
+            closeProgram()
+        else:
+            print("Invalid choice, try again.")
 
 if __name__ == "__main__":
     start()
